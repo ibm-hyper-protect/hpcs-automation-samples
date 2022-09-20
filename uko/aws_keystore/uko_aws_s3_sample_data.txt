@@ -1,0 +1,4 @@
+Welcome,
+
+This file is residing in AWS S3 bucket, which is encrypted by a root key that is 
+managed by Unified Key Orchestrator in IBM Cloud.
