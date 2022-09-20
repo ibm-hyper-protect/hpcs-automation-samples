@@ -28,6 +28,7 @@ resource ibm_hpcs_keystore aws_keystore {
 
 # Create a key template that will be used to create a key under a keystore
 resource ibm_hpcs_key_template key_template {
+  depends_on        = [ibm_hpcs_keystore.aws_keystore]
   instance_id       = ibm_hpcs_vault.uko_vault.instance_id
   region            = ibm_hpcs_vault.uko_vault.region
   uko_vault         = ibm_hpcs_vault.uko_vault.vault_id
@@ -53,6 +54,7 @@ resource ibm_hpcs_key_template key_template {
 
 # Create AWS key in the keystore that is previously created
 resource ibm_hpcs_managed_key aws_key {
+  depends_on     = [ibm_hpcs_key_template.key_template]
   instance_id    = ibm_hpcs_vault.uko_vault.instance_id
   region         = ibm_hpcs_vault.uko_vault.region
   uko_vault      = ibm_hpcs_vault.uko_vault.vault_id
