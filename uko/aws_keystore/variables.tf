@@ -18,7 +18,7 @@ variable "aws_region" {
 
 variable "ibm_cloud_region" {
   type        = string
-  default     = "us-south"
+  default     = "us-east"
   description = "IBM region onto which the UKO instance needs to deployed"
 }
 
