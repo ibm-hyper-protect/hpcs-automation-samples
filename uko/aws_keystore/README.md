@@ -22,20 +22,24 @@ If you prefer downloading these files from [here](https://github.com/ibm-hyper-p
 
 ### Running the automation
 
-By default, UKO is created in `us-east` region, and AWS key is created in `us-east-1` region. However, all this can be overridden by doing `export TF_VAR_<name_of_the_variable>=<value>` in the terminal before running the automation.
+By default, UKO is created in `us-east` region, and AWS key is created in `us-east-2` region. However, all this can be overridden by doing `export TF_VAR_<name_of_the_variable>=<value>` in the terminal before running the automation.
 
 Example: `export TF_VAR_aws_region=us-south-1`
 
 See `variables.tf` for a list of variables used and their default values. 
 
-Below snippet assumes that none of the default values are overridden, and only the required values are to be entered when prompted.
+Below commands assume that none of the default values are overridden, and only the required values are to be entered when prompted.
+If you want to provide values for the required variables beforehand, then you may set these variables prior to running the automation.
+
+Example: `export TF_VAR_aws_iam_access_key_id=<value>`
 
 Goto the directory that has all the files and execute :
 ```code
 terraform init
 terraform apply --auto-approve
 ```
-When `terraform apply --auto-approve` is run, you will be asked to provide input for the variables that don't have default value.
+When `terraform apply --auto-approve` is run, you will be asked to provide input for the variables that don't have default value or they are not defined using TF_VAR_
+
 ```text
 % terraform apply 
 var.aws_iam_access_key_id
@@ -56,7 +60,11 @@ var.ibm_cloud_api_key
 After this point, automation does everything.
 
 ### Next steps
-At this point, you may login to AWS and see the S3 bucket, and download the object inside the bucket.
+At this point, you may login to AWS and see the key in KMS, also see the S3 bucket, and download the object inside the bucket.
+
+- **List AWS KMS keys to see the key - Choose the right aws_region**
+![](https://github.com/ibm-hyper-protect/hpcs-automation-samples/blob/main/uko/aws_keystore/images/AWS%20KMS%20showing%20the%20key.png)
+
 
 - **List AWS S3 buckets**
 ![](https://github.com/ibm-hyper-protect/hpcs-automation-samples/blob/main/uko/aws_keystore/images/AWS%20list%20S3%20buckets.png)
@@ -126,7 +134,7 @@ Once you are done, you may destroy the created resources. Execute :
 ```
 terraform destroy --auto-approve
 ```
-When `terraform destroy --auto-approve` is run, you will be asked to provide input for the variables that don't have default value.
+When `terraform destroy --auto-approve` is run, you will be asked to provide input for the variables that don't have default value or they are not defined using TF_VAR_
 ```text
 % terraform apply 
 var.aws_iam_access_key_id
