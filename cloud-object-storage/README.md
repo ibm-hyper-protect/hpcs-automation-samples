@@ -25,7 +25,7 @@ See `variables.tf` for a list of variables used and their default values.
 Below commands assume that none of the default values are overridden, and only the required values are to be entered when prompted.
 If you want to provide values for the required variables beforehand, then you may set these variables prior to running the automation.
 
-Example: `export TF_VAR_hpcs_region=us-east`
+Example: `export TF_VAR_hpcs_region=us-south`
 
 Goto the directory that has all the files and execute :
 ```code
@@ -39,12 +39,12 @@ When `terraform apply --auto-approve` is run, you will be asked to provide input
 var.hpcs_instance_name
   Name of the existing HPCS instance which will be used to create a root key
 
-  Enter a value: xxxxxxxxxxxxxxxxxxxx
+  Enter a value: TEST-HPCS-TERRAFORM
 
 var.hpcs_region
   Region that has the HPCS instance deployed
 
-  Enter a value: us-south
+  Enter a value: us-east
 
 var.ibm_cloud_api_key
   IAM API key that is created on IBM cloud console
@@ -67,12 +67,12 @@ When `terraform destroy --auto-approve` is run, you will be asked to provide inp
 var.hpcs_instance_name
   Name of the existing HPCS instance which will be used to create a root key
 
-  Enter a value: xxxxxxxxxxxxxxxxxxxx
+  Enter a value: TEST-HPCS-TERRAFORM
 
 var.hpcs_region
   Region that has the HPCS instance deployed
 
-  Enter a value: us-south
+  Enter a value: us-east
 
 var.ibm_cloud_api_key
   IAM API key that is created on IBM cloud console
